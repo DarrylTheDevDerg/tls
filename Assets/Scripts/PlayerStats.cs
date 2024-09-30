@@ -6,8 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     public int coins;
     public int ammo;
-
-    public int level;
+    public int extraAmmo;
 
     // Start is called before the first frame update
     void Start()
