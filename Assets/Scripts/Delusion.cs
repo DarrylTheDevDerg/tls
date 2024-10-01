@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -11,19 +12,20 @@ public class DelusionObjects
 }
 public class Delusion : MonoBehaviour
 {
-    public float hp, cooldown;
+    [Tooltip("The player's HP and delusional 'cooldown' to avoid overcluttering of GameObjects.")]
+    public float hp, deluCooldown;
+    [Tooltip("The Game Over scene name, must not be blank unless for debugging purposes.")]
     public string gameOverScreen;
+    [Tooltip("List used for the different sanity levels, containing different illusions (GameObjects or effects) each one.")]
     public List<DelusionObjects> illusionObjects = new List<DelusionObjects>();
-    public int chance, chanceThreshold, illusionAmt;
+    [Tooltip("The threshold used for the spawn chance and the amount of illusions to spawn at a time.")]
+    public int chanceThreshold, illusionAmt;
+    [Tooltip("Unity Events that happen when the player has reached 0 HP.")]
+    public UnityEvent onDeath;
 
     private int realityCheckLvl, randChance;
     private float currentTime;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool dead;
 
     // Update is called once per frame
     void Update()
@@ -35,9 +37,9 @@ public class Delusion : MonoBehaviour
 
         RealityCheck(hp);
 
-        if (currentTime > cooldown)
+        if (currentTime >= deluCooldown)
         {
-
+            RandomizeSpawnChance();
             currentTime = 0;
         }
     }
@@ -87,6 +89,33 @@ public class Delusion : MonoBehaviour
         else if (illusionAmt == 1)
         {
             Instantiate(illusionObjects[realityCheckLvl].IllusionaryObjects[(int)Random.Range(0, illuLimit)]);
+        }
+    }
+
+    void SpawnChance(int chance)
+    {
+        if (chance > randChance)
+        {
+            SpawnManagement();
+        }
+    }
+
+    float LoseHP(float amount)
+    {
+        hp -= amount;
+        return hp;
+    }
+
+    void GoToGameOver()
+    {
+        SceneManager.LoadScene(gameOverScreen);
+    }
+
+    void GameOverEvents()
+    {
+        if (!dead)
+        {
+            onDeath.Invoke();
         }
     }
 }
