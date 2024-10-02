@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -23,19 +26,40 @@ public class Delusion : MonoBehaviour
     [Tooltip("Unity Events that happen when the player has reached 0 HP.")]
     public UnityEvent onDeath;
 
-    private int realityCheckLvl, randChance;
+    private int realityCheckLvl, randChance, maxHP;
     private float currentTime;
     private bool dead;
+
+    // Volume + effects
+    private Volume globalVolume;
+    private Vignette vignette;
+    private ChromaticAberration cA;
+    private ColorAdjustments colorAdjustments;
+    private MotionBlur motionBlur;
+    private LensDistortion lD;
+
+    private void Start()
+    {
+        globalVolume = FindObjectOfType<Volume>();
+
+        if (globalVolume.profile.TryGet(out vignette) && globalVolume.profile.TryGet(out cA) && globalVolume.profile.TryGet(out motionBlur) && globalVolume.profile.TryGet(out colorAdjustments) && globalVolume.profile.TryGet(out lD))
+        {
+            print("Effects found.");
+        }
+
+        maxHP = (int)hp;
+    }
 
     // Update is called once per frame
     void Update()
     {
+        RealityCheck(hp);
+        UpdateEffects();
+
         if (hp <= 75f)
         {
             currentTime += Time.deltaTime;
         }
-
-        RealityCheck(hp);
 
         if (currentTime >= deluCooldown)
         {
@@ -116,6 +140,21 @@ public class Delusion : MonoBehaviour
         if (!dead)
         {
             onDeath.Invoke();
+        }
+    }
+
+    void UpdateEffects()
+    {
+        if (vignette != null && cA != null && motionBlur != null && colorAdjustments != null && lD != null)
+        {
+            float normalizedHP = Mathf.Clamp01(hp / maxHP);
+
+            vignette.intensity.value = 0.45f - normalizedHP;
+            cA.intensity.value = 0.5f - normalizedHP;
+            motionBlur.intensity.value = 1f - normalizedHP;
+            lD.intensity.value = (1f - Mathf.Lerp(0.5f, 1f, normalizedHP)) * -1f;
+
+            colorAdjustments.saturation.value = Mathf.Lerp(0.1f, 0.85f, hp);
         }
     }
 }

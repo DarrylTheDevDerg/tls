@@ -23,6 +23,6 @@ public class PlayerHealthDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slider.value = health;
+        slider.value = d.hp;
     }
 }
