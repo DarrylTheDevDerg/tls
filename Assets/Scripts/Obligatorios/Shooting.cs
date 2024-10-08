@@ -9,16 +9,24 @@ public class Shooting : MonoBehaviour
     [SerializeField] float projectileSpeed = 20f; // Speed of the projectile
     [SerializeField] float fireRate = 0.5f; // Time between shots
     private float nextFireTime = 0f;
+    private PlayerStats pS;
     [SerializeField] float bulletLife = 1;
 
-
+    private void Start()
+    {
+        pS = FindObjectOfType<PlayerStats>();
+    }
 
     void Update()
     {
         if (Input.GetButton("Fire1") && Time.time > nextFireTime)
         {
-            Shoot();
-            nextFireTime = Time.time + fireRate;
+            if (pS != null && pS.ammo > 0)
+            {
+                Shoot();
+                nextFireTime = Time.time + fireRate;
+                pS.ammo--;
+            }
         }
     }
 

@@ -149,17 +149,18 @@ MonoBehaviour:
   searchedTag: Enemy
   dealDmg: 10
   destroyOnHit: 1
+  shouldKnockBack: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6462576972015791483, guid: 6bd65206c7b9141479dd193d3b7016e8,
+      - m_Target: {fileID: 8141617628397331171, guid: 6bd65206c7b9141479dd193d3b7016e8,
           type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+        m_TargetAssemblyTypeName: EnemyKnockback, Assembly-CSharp
+        m_MethodName: ApplyKnockback
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

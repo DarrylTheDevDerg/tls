@@ -15,20 +15,27 @@ public class DelusionObjects
 }
 public class Delusion : MonoBehaviour
 {
-    [Tooltip("The player's HP and delusional 'cooldown' to avoid overcluttering of GameObjects.")]
-    public float hp, deluCooldown;
+    [Range(0f, 100f)]
+    [Tooltip("The player's HP and sanity effects manager.")]
+    public float hp;
+    [Tooltip("The delusional 'cooldown' to avoid overcluttering of GameObjects.")]
+    [Range(10f, 100f)]
+    public float deluCooldown;
     [Tooltip("The Game Over scene name, must not be blank unless for debugging purposes.")]
     public string gameOverScreen;
     [Tooltip("List used for the different sanity levels, containing different illusions (GameObjects or effects) each one.")]
     public List<DelusionObjects> illusionObjects = new List<DelusionObjects>();
-    [Tooltip("The threshold used for the spawn chance and the amount of illusions to spawn at a time.")]
-    public int chanceThreshold, illusionAmt;
+    [Tooltip("The threshold used for the spawn chance.")]
+    public int chanceThreshold;
+    public int[] illusionAmt;
     [Tooltip("Unity Events that happen when the player has reached 0 HP.")]
     public UnityEvent onDeath;
+    public float cylinderRadius;
+    public Transform centralPoint;
 
     private int realityCheckLvl, randChance, maxHP;
     private float currentTime;
-    private bool dead;
+    private bool dead, spawned;
 
     // Volume + effects
     private Volume globalVolume;
@@ -55,16 +62,35 @@ public class Delusion : MonoBehaviour
     {
         RealityCheck(hp);
         UpdateEffects();
+        RandomizeSpawnChance();
 
         if (hp <= 75f)
         {
-            currentTime += Time.deltaTime;
+            if (!spawned)
+            {
+                SpawnChance(randChance);
+            }
+
+            if (spawned)
+            {
+                currentTime += Time.deltaTime;
+            }
         }
 
         if (currentTime >= deluCooldown)
         {
-            RandomizeSpawnChance();
+            spawned = false;
             currentTime = 0;
+        }
+
+        if (hp > 100)
+        {
+            hp = 100;
+        }
+        else if (hp < 0)
+        {
+            hp = 0;
+            GameOverEvents();
         }
     }
 
@@ -96,31 +122,47 @@ public class Delusion : MonoBehaviour
 
     void RandomizeSpawnChance()
     {
-        randChance = (int)Random.Range(0, chanceThreshold);
+        randChance = Random.Range(0, chanceThreshold);
     }
 
-    void SpawnManagement()
+    void SpawnManagement(bool check)
     {
         int illuLimit = illusionObjects.Count;
+        float angleIncrement = 360f / illuLimit;
 
-        if (illusionAmt > 1)
+        if (illusionAmt[realityCheckLvl] > 1 && !check)
         {
-            for (int i = 0; i < illusionAmt; i++)
+            for (int i = 0; i < illusionAmt[realityCheckLvl]; i++)
             {
-                Instantiate(illusionObjects[realityCheckLvl].IllusionaryObjects[(int)Random.Range(0, illuLimit)]);
+                float angle = i * angleIncrement * Mathf.Deg2Rad;
+
+                float xPos = centralPoint.position.x + Mathf.Cos(angle) * cylinderRadius;
+                float zPos = centralPoint.position.z + Mathf.Sin(angle) * cylinderRadius;
+
+                float yPos = centralPoint.position.y + ((Mathf.Sin(angle) * cylinderRadius) / 1.5f);
+
+                if (yPos < 0)
+                {
+                    yPos = yPos * -1;
+                }
+
+                Vector3 spawnPos = new Vector3(xPos, yPos, zPos);
+                Instantiate(illusionObjects[realityCheckLvl].IllusionaryObjects[Random.Range(0, illuLimit-1)], spawnPos, Quaternion.identity);
             }
         }
-        else if (illusionAmt == 1)
+        else if (illusionAmt[realityCheckLvl] == 1 && !check)
         {
-            Instantiate(illusionObjects[realityCheckLvl].IllusionaryObjects[(int)Random.Range(0, illuLimit)]);
+            Instantiate(illusionObjects[realityCheckLvl].IllusionaryObjects[Random.Range(0, illuLimit-1)]);
         }
+
+        spawned = true;
     }
 
     void SpawnChance(int chance)
     {
-        if (chance > randChance)
+        if (chance > chanceThreshold / 1.5f)
         {
-            SpawnManagement();
+            SpawnManagement(spawned);
         }
     }
 
@@ -149,12 +191,24 @@ public class Delusion : MonoBehaviour
         {
             float normalizedHP = Mathf.Clamp01(hp / maxHP);
 
-            vignette.intensity.value = 0.45f - normalizedHP;
-            cA.intensity.value = 0.5f - normalizedHP;
+            vignette.intensity.value = 0.5f - Mathf.Lerp(0f, 0.65f, normalizedHP);
+            cA.intensity.value = 0.625f - normalizedHP;
             motionBlur.intensity.value = 1f - normalizedHP;
             lD.intensity.value = (1f - Mathf.Lerp(0.5f, 1f, normalizedHP)) * -1f;
 
-            colorAdjustments.saturation.value = Mathf.Lerp(0.1f, 0.85f, hp);
+            colorAdjustments.saturation.value = 0f - (normalizedHP * 2);
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        if (centralPoint != null)
+        {
+            // Set Gizmo color
+            Gizmos.color = Color.green;
+
+            // Draw a wireframe circle around the player with the specified radius
+            Gizmos.DrawWireSphere(centralPoint.position, cylinderRadius);
         }
     }
 }
