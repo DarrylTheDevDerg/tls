@@ -5,6 +5,7 @@ using UnityEngine;
 public class Billboard2D : MonoBehaviour
 {
     public Camera mainCamera; // Assign the main camera here, or it will find it at runtime
+    public bool snapY;
 
     void Start()
     {
@@ -21,7 +22,10 @@ public class Billboard2D : MonoBehaviour
         Vector3 directionToCamera = mainCamera.transform.position - transform.position;
 
         // We only want the rotation on the Y axis, so we zero out the X and Z
-        directionToCamera.y = 0;
+        if (snapY)
+        {
+            directionToCamera.y = 0;
+        }
 
         // If the direction is non-zero (to avoid errors when the camera is directly overhead or below)
         if (directionToCamera != Vector3.zero)

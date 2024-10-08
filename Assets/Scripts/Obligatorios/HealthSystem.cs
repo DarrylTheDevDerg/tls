@@ -21,6 +21,7 @@ public class HealthSystem : MonoBehaviour
         if (currentHealth <= 0f)
         {
             onDeath?.Invoke();
+            Destroy(gameObject);
         }
         else
         {

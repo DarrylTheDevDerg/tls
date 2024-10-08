@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fa25b234ee286d5498f656c1e4e8b365, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9528302, g: 0.68765575, b: 0.70817727, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,7 +103,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 94ebcc1001ec97848846f40b3e6975c3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -125,9 +125,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aggroName: isAggro
   playerTag: Player
+  aggroState: inAggro
   minDmg: 2
   maxDmg: 6
   threshold: 3
+  minSpeed: 0.01
+  maxSpeed: 0.1
 --- !u!65 &1389608065589809387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -147,8 +150,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.45, y: 1.34, z: 1.36}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.03, y: 0.91, z: 0.63}
+  m_Center: {x: -0.07, y: 0, z: 0}
 --- !u!114 &1281249557820605898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  snapY: 0
 --- !u!54 &7967925710528577478
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -201,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f94ecf423fcf7054cad14173448c0190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 3
+  fadeDuration: 5
   fadeDelay: 1
-  fadeCycles: 2
+  fadeCycles: 1
   onStart: 1

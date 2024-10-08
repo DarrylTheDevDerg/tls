@@ -44,12 +44,13 @@ public class Delusion : MonoBehaviour
     private ColorAdjustments colorAdjustments;
     private MotionBlur motionBlur;
     private LensDistortion lD;
+    private FilmGrain fG;
 
     private void Start()
     {
         globalVolume = FindObjectOfType<Volume>();
 
-        if (globalVolume.profile.TryGet(out vignette) && globalVolume.profile.TryGet(out cA) && globalVolume.profile.TryGet(out motionBlur) && globalVolume.profile.TryGet(out colorAdjustments) && globalVolume.profile.TryGet(out lD))
+        if (globalVolume.profile.TryGet(out vignette) && globalVolume.profile.TryGet(out cA) && globalVolume.profile.TryGet(out motionBlur) && globalVolume.profile.TryGet(out colorAdjustments) && globalVolume.profile.TryGet(out lD) && globalVolume.profile.TryGet(out fG))
         {
             print("Effects found.");
         }
@@ -125,48 +126,47 @@ public class Delusion : MonoBehaviour
         randChance = Random.Range(0, chanceThreshold);
     }
 
-    void SpawnManagement(bool check)
+    void SpawnManagement()
     {
         int illuLimit = illusionObjects.Count;
         float angleIncrement = 360f / illuLimit;
 
-        if (illusionAmt[realityCheckLvl] > 1 && !check)
+        if (illusionAmt[realityCheckLvl] > 1 && !spawned)
         {
             for (int i = 0; i < illusionAmt[realityCheckLvl]; i++)
             {
                 float angle = i * angleIncrement * Mathf.Deg2Rad;
 
-                float xPos = centralPoint.position.x + Mathf.Cos(angle) * cylinderRadius;
-                float zPos = centralPoint.position.z + Mathf.Sin(angle) * cylinderRadius;
-
-                float yPos = centralPoint.position.y + ((Mathf.Sin(angle) * cylinderRadius) / 1.5f);
-
-                if (yPos < 0)
-                {
-                    yPos = yPos * -1;
-                }
+                float xPos = centralPoint.position.x + Mathf.Cos(angle) * cylinderRadius + Random.Range(-0.5f, 0.5f);
+                float zPos = centralPoint.position.z + Mathf.Sin(angle) * cylinderRadius + Random.Range(-0.5f, 0.5f);
+                float yPos = centralPoint.position.y + Random.Range(0f, 3.25f);
 
                 Vector3 spawnPos = new Vector3(xPos, yPos, zPos);
-                Instantiate(illusionObjects[realityCheckLvl].IllusionaryObjects[Random.Range(0, illuLimit-1)], spawnPos, Quaternion.identity);
+
+                if (illusionObjects[realityCheckLvl].IllusionaryObjects.Length > 0)
+                {
+                    Instantiate(illusionObjects[realityCheckLvl].IllusionaryObjects[Random.Range(0, illusionObjects[realityCheckLvl].IllusionaryObjects.Length )], spawnPos, Quaternion.identity);
+                }
             }
+
+            spawned = true;
         }
-        else if (illusionAmt[realityCheckLvl] == 1 && !check)
+        else if (illusionAmt[realityCheckLvl] == 1 && !spawned)
         {
             Instantiate(illusionObjects[realityCheckLvl].IllusionaryObjects[Random.Range(0, illuLimit-1)]);
+            spawned = true;
         }
-
-        spawned = true;
     }
 
     void SpawnChance(int chance)
     {
         if (chance > chanceThreshold / 1.5f)
         {
-            SpawnManagement(spawned);
+            SpawnManagement();
         }
     }
 
-    float LoseHP(float amount)
+    public float LoseHP(float amount)
     {
         hp -= amount;
         return hp;
@@ -193,10 +193,12 @@ public class Delusion : MonoBehaviour
 
             vignette.intensity.value = 0.5f - Mathf.Lerp(0f, 0.65f, normalizedHP);
             cA.intensity.value = 0.625f - normalizedHP;
-            motionBlur.intensity.value = 1f - normalizedHP;
+            motionBlur.intensity.value = 1f - Mathf.Lerp(0f, 1f, normalizedHP);
             lD.intensity.value = (1f - Mathf.Lerp(0.5f, 1f, normalizedHP)) * -1f;
+            fG.intensity.value = 0.75f - normalizedHP;
 
-            colorAdjustments.saturation.value = 0f - (normalizedHP * 2);
+            colorAdjustments.saturation.value = Mathf.Lerp(-4f, 0f, normalizedHP);
+            colorAdjustments.postExposure.value = Mathf.Lerp(-1f, 0f, normalizedHP);
         }
     }
 
@@ -210,5 +212,10 @@ public class Delusion : MonoBehaviour
             // Draw a wireframe circle around the player with the specified radius
             Gizmos.DrawWireSphere(centralPoint.position, cylinderRadius);
         }
+    }
+
+    public int RetrieveRCLevel()
+    {
+        return realityCheckLvl;
     }
 }
