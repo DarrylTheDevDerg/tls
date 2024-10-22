@@ -21,7 +21,6 @@ public class HealthSystem : MonoBehaviour
         if (currentHealth <= 0f)
         {
             onDeath?.Invoke();
-            Destroy(gameObject);
         }
         else
         {
@@ -38,5 +37,10 @@ public class HealthSystem : MonoBehaviour
     public bool IsAlive()
     {
         return currentHealth > 0f;
+    }
+
+    public void Optimization()
+    {
+        Destroy(gameObject);
     }
 }

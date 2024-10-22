@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public class DealDamage : MonoBehaviour
 {
-    [SerializeField] string searchedTag;
+    [SerializeField] string searchedTag, animationTag;
     [SerializeField] float dealDmg;
-    [SerializeField] bool destroyOnHit = false, shouldKnockBack;
+    [SerializeField] bool destroyOnHit = false, shouldAnim, isEnemy;
     [SerializeField] UnityEvent onHit;
 
 
@@ -15,18 +15,44 @@ public class DealDamage : MonoBehaviour
     {
         if (other.CompareTag(searchedTag))
         {
-            other.GetComponent<HealthSystem>().TakeDamage(dealDmg);
+            if (isEnemy)
+            {
+                other.GetComponent<Delusion>().LoseHP(dealDmg);
+            }
+
+            else
+            {
+                other.GetComponent<HealthSystem>().TakeDamage(dealDmg);
+                other.GetComponent<EnemyAttack>().ResetTime();
+            }
+
+            if (shouldAnim)
+            {
+                Animator animator = other.GetComponent<Animator>();
+                animator.SetTrigger(animationTag);
+            }
 
             if (destroyOnHit)
             {
                 onHit?.Invoke();
                 Destroy(this.gameObject);
             }
+
         }
     }
 
     public void Spawn(GameObject go)
     {
         Instantiate(go, this.transform.parent);
+    }
+
+    public float GetDMG()
+    {
+        return dealDmg;
+    }
+
+    public string RetrieveSearchTag()
+    {
+        return searchedTag;
     }
 }

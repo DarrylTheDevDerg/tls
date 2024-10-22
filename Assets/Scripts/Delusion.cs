@@ -218,4 +218,17 @@ public class Delusion : MonoBehaviour
     {
         return realityCheckLvl;
     }
+
+    public float RetrieveMaxHP()
+    {
+        return maxHP;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<DealDamage>() != null && other.GetComponent<DealDamage>().RetrieveSearchTag() == "Player")
+        {
+            LoseHP(other.GetComponent<DealDamage>().GetDMG());
+        }
+    }
 }

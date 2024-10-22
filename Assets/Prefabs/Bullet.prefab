@@ -147,9 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   searchedTag: Enemy
+  animationTag: hurt
   dealDmg: 10
   destroyOnHit: 1
-  shouldKnockBack: 0
+  shouldAnim: 1
   onHit:
     m_PersistentCalls:
       m_Calls:
