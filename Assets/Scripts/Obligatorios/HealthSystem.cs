@@ -43,4 +43,9 @@ public class HealthSystem : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public float GetHP()
+    {
+        return currentHealth;
+    }
 }

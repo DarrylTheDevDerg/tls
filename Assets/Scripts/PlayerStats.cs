@@ -19,6 +19,11 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         CoinDisplay();
+
+        if (extraAmmo < 0)
+        {
+            extraAmmo = 0;
+        }
     }
 
     public void LoadPlayerStats()

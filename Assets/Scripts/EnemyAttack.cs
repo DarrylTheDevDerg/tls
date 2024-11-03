@@ -36,6 +36,9 @@ public class EnemyAttack : MonoBehaviour
     [TabGroup("Values")]
     public string attackAnim;
 
+    [TabGroup("Special")]
+    public bool isBoss;
+
 
     public enum AttackType
     {
@@ -54,7 +57,10 @@ public class EnemyAttack : MonoBehaviour
         d = FindObjectOfType<Delusion>();
         a = GetComponent<Animator>();
 
-        SetAnimLayer(attackType);
+        if (!isBoss)
+        {
+            SetAnimLayer(attackType);
+        }
     }
 
     // Update is called once per frame

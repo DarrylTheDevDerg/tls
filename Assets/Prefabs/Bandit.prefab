@@ -37,8 +37,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 2.36214, y: 3, z: 3}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7014075167578398421}
   m_Father: {fileID: 0}
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 242f19fa31e251247bd7785d8319dfdc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
   bulletLife: 2
   attackDelay: 4
   attackAnim: attack
+  isBoss: 0
 --- !u!114 &2400928584837738965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e3e0200df3aba4fac5b617992bca9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 28
   timeToSelfDestructOnDeath: 1
   onBeenHit:
     m_PersistentCalls:
@@ -252,7 +253,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2, y: 1.2, z: 0.2}
+  m_Size: {x: 1.2, y: 1.2, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7480033426762984256
 Rigidbody:
@@ -337,7 +338,7 @@ Transform:
   m_GameObject: {fileID: 6416344694061815433}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.257, y: 0.032, z: 0}
+  m_LocalPosition: {x: 0.205, y: 0.027, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

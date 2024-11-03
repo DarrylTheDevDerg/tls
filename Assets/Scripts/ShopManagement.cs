@@ -15,7 +15,7 @@ public class ShopManagement : MonoBehaviour
 
     public Product product;
     public int price;
-    public TextMeshProUGUI displayName, priceText, coinDisplay, descriptionDisplay;
+    public TextMeshProUGUI displayName, priceText, descriptionDisplay;
     public string description;
 
     private int currentCoins;
@@ -24,7 +24,6 @@ public class ShopManagement : MonoBehaviour
     void Start()
     {
         currentCoins = PlayerPrefs.GetInt("Coins", 0);
-        coinDisplay.text = currentCoins.ToString();
 
         switch (product)
         {
@@ -54,13 +53,7 @@ public class ShopManagement : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        coinDisplay.text = currentCoins.ToString();
-    }
-
-    void BuyItem()
+    public void BuyItem()
     {
         int extrab = PlayerPrefs.GetInt("Extra Ammo", 0);
 
@@ -117,7 +110,7 @@ public class ShopManagement : MonoBehaviour
         currentCoins -= price;
     }
 
-    private void OnMouseOver()
+    public void OnHoverEnter()
     {
         descriptionDisplay.text = description;
     }

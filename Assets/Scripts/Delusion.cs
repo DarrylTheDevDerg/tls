@@ -179,10 +179,7 @@ public class Delusion : MonoBehaviour
 
     void GameOverEvents()
     {
-        if (!dead)
-        {
-            onDeath.Invoke();
-        }
+        onDeath.Invoke();
     }
 
     void UpdateEffects()

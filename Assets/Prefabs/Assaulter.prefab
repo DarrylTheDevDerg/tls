@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 2933694218023178789}
   - component: {fileID: 4185448292961358851}
   - component: {fileID: 1673395558178188546}
+  - component: {fileID: 7890735596306052117}
+  - component: {fileID: 7280552332019137457}
   m_Layer: 0
   m_Name: Assaulter
   m_TagString: Enemy
@@ -79,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1a063f73262b29747949e122e6cdde2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -145,7 +147,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7, y: 2, z: 0.2}
+  m_Size: {x: 1.7, y: 2, z: 1.02}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &96542981000925253
 MonoBehaviour:
@@ -159,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e3e0200df3aba4fac5b617992bca9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 14
   timeToSelfDestructOnDeath: 1
   onBeenHit:
     m_PersistentCalls:
@@ -195,12 +197,13 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   bullet: {fileID: 0}
   hitbox: {fileID: 8615744076528115532, guid: 3524a424ed592e14881765c61f4934a9, type: 3}
-  minDmg: 2
-  maxDmg: 3
+  minDmg: 3
+  maxDmg: 5
   projectileSpeed: 0
   bulletLife: 1
-  attackDelay: 0.5
+  attackDelay: 4
   attackAnim: attack
+  isBoss: 0
 --- !u!54 &4185448292961358851
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -241,3 +244,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 0.65
+--- !u!114 &7890735596306052117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473969771443073553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549e6a711f0867f4ea5c06fb3bde0489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  stoppingDistance: 0.76
+  minCircleTime: 6
+  maxCircleTime: 12
+  circleSpeed: 3.2
+  circleRadius: 3.34
+  speedParam: walk
+--- !u!195 &7280552332019137457
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473969771443073553}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.85
+  m_Speed: 2.3
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

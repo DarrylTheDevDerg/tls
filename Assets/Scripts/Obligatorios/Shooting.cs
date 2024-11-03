@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] float fireRate = 0.5f; // Time between shots
     private float nextFireTime = 0f;
     private PlayerStats pS;
+    private int usedAmmo;
     [SerializeField] float bulletLife = 1;
 
     private void Start()
@@ -26,6 +27,18 @@ public class Shooting : MonoBehaviour
                 Shoot();
                 nextFireTime = Time.time + fireRate;
                 pS.ammo--;
+                usedAmmo++;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (pS != null && pS.ammo < 100 && pS.extraAmmo > 0)
+            {
+                pS.ammo += usedAmmo;
+                pS.extraAmmo -= usedAmmo;
+
+                usedAmmo = 0;
             }
         }
     }
@@ -42,5 +55,29 @@ public class Shooting : MonoBehaviour
         Destroy(projectile, bulletLife);
     }
 
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.R) && currentAmmo <= 999)
+    //    {
+    //        if (extraAmmo > usedAmmo)
+    //        { 
+    //            currentAmmo += usedAmmo;
+    //            extraAmmo -= usedAmmo;
+    //            usedAmmo = 0;
+    //        }
+    //    }
+    //}
 
+    //public void AddAmountAmmo(int number)
+    //{
+    //    if (currentAmmo < 100)
+    //    {
+    //        currentAmmo += number;
+    //    }
+    //    else
+    //    {
+    //        extraAmmo += number;
+    //    }
+    //}
 }

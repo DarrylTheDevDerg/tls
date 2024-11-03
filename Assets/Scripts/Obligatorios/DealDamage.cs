@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class DealDamage : MonoBehaviour
 {
     [SerializeField] string searchedTag, animationTag;
-    [SerializeField] float dealDmg;
+    [SerializeField] public float dealDmg;
     [SerializeField] bool destroyOnHit = false, shouldAnim, isEnemy;
     [SerializeField] UnityEvent onHit;
 
@@ -23,7 +23,11 @@ public class DealDamage : MonoBehaviour
             else
             {
                 other.GetComponent<HealthSystem>().TakeDamage(dealDmg);
-                other.GetComponent<EnemyAttack>().ResetTime();
+
+                if (other.GetComponent<EnemyAttack>() != null)
+                {
+                    other.GetComponent<EnemyAttack>().ResetTime();
+                }
             }
 
             if (shouldAnim)
