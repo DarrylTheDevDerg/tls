@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.19558354, g: 0.23695685, b: 0.31053016, a: 1}
+  m_IndirectSpecularColor: {r: 0.19557694, g: 0.23695657, b: 0.310541, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -131,6 +131,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1318490242296480600, guid: 7a83aa3214502a14ca46a0ac543c755d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176214406237020887, guid: 7a83aa3214502a14ca46a0ac543c755d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454691675040183980, guid: 7a83aa3214502a14ca46a0ac543c755d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4755968065673651196, guid: 7a83aa3214502a14ca46a0ac543c755d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -179,6 +194,11 @@ PrefabInstance:
     - target: {fileID: 4755968065673651196, guid: 7a83aa3214502a14ca46a0ac543c755d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4944057694983783786, guid: 7a83aa3214502a14ca46a0ac543c755d,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5690555731336125732, guid: 7a83aa3214502a14ca46a0ac543c755d,
@@ -481,16 +501,26 @@ PrefabInstance:
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2049009439}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 196366179}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
@@ -500,17 +530,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ActivateScreen
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: LevelCompletion, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5904523861086005074, guid: 3ac72e820573ccb43b7c4f166059ac6f,

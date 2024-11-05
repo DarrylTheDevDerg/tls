@@ -16,6 +16,7 @@ public class Shooting : MonoBehaviour
     private void Start()
     {
         pS = FindObjectOfType<PlayerStats>();
+        pS.extraAmmo += Random.Range(50, 150);
     }
 
     void Update()

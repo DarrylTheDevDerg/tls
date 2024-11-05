@@ -7,9 +7,11 @@ public class LevelCompletion : MonoBehaviour
 {
     public GameObject ui, pause;
     public string shop, ending;
+    public KeyCode shopKey, endingKey;
 
     private PauseScreen pS;
     private PlayerPrefsManager PlayerPrefsManager;
+    private LevelProgression lP;
     private int level;
     private bool complete;
 
@@ -18,6 +20,7 @@ public class LevelCompletion : MonoBehaviour
     {
         pS = FindObjectOfType<PauseScreen>();
         PlayerPrefsManager = FindObjectOfType<PlayerPrefsManager>();
+        lP = FindObjectOfType<LevelProgression>();
 
         level = PlayerPrefs.GetInt("Level", 0);
     }
@@ -26,8 +29,8 @@ public class LevelCompletion : MonoBehaviour
     {
         if (complete)
         {
-            ShopWarp();
             PlayerPrefsManager.SaveAll();
+            KeyCheck();
         }
         else
         {
@@ -44,29 +47,29 @@ public class LevelCompletion : MonoBehaviour
 
         pS.enabled = false;
         ui.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0f;
         complete = true;
     }
 
     public void ShopWarp()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene(shop);
     }
 
     public void LevelLoad()
     {
-        Time.timeScale = 1f;
+        lP.Progression();
+    }
 
-        if (level < 3)
+    public void KeyCheck()
+    {
+        if (Input.GetKeyDown(shopKey) && Time.deltaTime > 0f)
         {
-            SceneManager.LoadScene($"Level{level + 1}");
+            ShopWarp();
         }
-        else if (level == 3)
+
+        if (Input.GetKeyDown(endingKey) && Time.deltaTime > 0f)
         {
-            SceneManager.LoadScene(ending);
+            LevelLoad();
         }
-        
     }
 }

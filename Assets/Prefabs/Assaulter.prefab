@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 1673395558178188546}
   - component: {fileID: 7890735596306052117}
   - component: {fileID: 7280552332019137457}
+  - component: {fileID: -6174403112190929921}
+  - component: {fileID: 6248581089391176663}
   m_Layer: 0
   m_Name: Assaulter
   m_TagString: Enemy
@@ -35,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 8473969771443073553}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.23, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -285,3 +287,33 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-6174403112190929921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473969771443073553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd8388af727ae142b87e59584da1221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6248581089391176663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473969771443073553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ccbfa261b65c949ab07b68fed1c61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shouldDrop: 1
+  coinPrefab: {fileID: 3529247928377469540, guid: 4bb0faeb1e16d804bb294701b0e1f6cd,
+    type: 3}
+  dropCoins: 1
+  chanceThreshold: 85
+  maxChance: 150

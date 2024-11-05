@@ -46,10 +46,10 @@ public class LevelText : MonoBehaviour
                 {
                     display.text = "The Last Run";
                 }
-            }
-            else
-            {
-                display.text = "???";
+                else
+                {
+                    display.text = "???";
+                }
             }
         }
     }

@@ -23,6 +23,10 @@ public class InventoryManagement : MonoBehaviour
         d = FindObjectOfType<Delusion>();
 
         GetPlayerPrefs();
+
+        medkits += Random.Range(1, 3);
+
+        fak += Random.Range(1, 3);
     }
 
     // Update is called once per frame

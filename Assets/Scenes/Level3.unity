@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.015425031, g: 0.0092442045, b: 0.014395857, a: 1}
+  m_IndirectSpecularColor: {r: 0.015430791, g: 0.009246423, b: 0.014405392, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -750,7 +750,7 @@ MonoBehaviour:
   objectToSpawn: {fileID: 8473969771443073553, guid: e2791c5259799294ea5614a98cb86e70,
     type: 3}
   sphereRadius: 14.19
-  timeThreshold: 2.71
+  timeThreshold: 4.7
   spawnAmount: 13
   yPosition: 0
 --- !u!114 &1874589106
@@ -768,7 +768,7 @@ MonoBehaviour:
   objectToSpawn: {fileID: 5600221962910551896, guid: ebca75d1622330146a17929420530c80,
     type: 3}
   sphereRadius: 14.19
-  timeThreshold: 1.9
+  timeThreshold: 6.5
   spawnAmount: 12
   yPosition: 0
 --- !u!4 &1874589107
@@ -862,16 +862,26 @@ PrefabInstance:
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1874589104}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2088179885}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
@@ -881,17 +891,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ActivateScreen
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: LevelCompletion, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5904523861086005074, guid: 3ac72e820573ccb43b7c4f166059ac6f,

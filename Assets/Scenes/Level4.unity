@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.008952402, g: 0.013101039, b: 0.020449812, a: 1}
+  m_IndirectSpecularColor: {r: 0.008958812, g: 0.013101446, b: 0.02045097, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -525,7 +525,7 @@ PrefabInstance:
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
@@ -535,6 +535,11 @@ PrefabInstance:
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
@@ -549,12 +554,22 @@ PrefabInstance:
       objectReference: {fileID: 1975980319}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 782032698}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
@@ -569,12 +584,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
@@ -589,12 +614,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
         type: 3}
       propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987167399397068835, guid: 3ac72e820573ccb43b7c4f166059ac6f,
+        type: 3}
+      propertyPath: stuff.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5904523861086005074, guid: 3ac72e820573ccb43b7c4f166059ac6f,
@@ -644,6 +679,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1975980319}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   timed: 1
   threshold: 3
@@ -788,7 +835,7 @@ MonoBehaviour:
   objectToSpawn: {fileID: 8473969771443073553, guid: e2791c5259799294ea5614a98cb86e70,
     type: 3}
   sphereRadius: 17.29
-  timeThreshold: 0.99
+  timeThreshold: 3.85
   spawnAmount: 6
   yPosition: 0
 --- !u!114 &782032701
@@ -806,7 +853,7 @@ MonoBehaviour:
   objectToSpawn: {fileID: 5600221962910551896, guid: ebca75d1622330146a17929420530c80,
     type: 3}
   sphereRadius: 17.29
-  timeThreshold: 1.64
+  timeThreshold: 5.65
   spawnAmount: 6
   yPosition: 0
 --- !u!1 &1774553767
@@ -1029,7 +1076,7 @@ MonoBehaviour:
   objectToSpawn: {fileID: 8473969771443073553, guid: e2791c5259799294ea5614a98cb86e70,
     type: 3}
   sphereRadius: 17.89
-  timeThreshold: 0
+  timeThreshold: 3.45
   spawnAmount: 9
   yPosition: 0
 --- !u!114 &1975980322
@@ -1047,7 +1094,7 @@ MonoBehaviour:
   objectToSpawn: {fileID: 5600221962910551896, guid: ebca75d1622330146a17929420530c80,
     type: 3}
   sphereRadius: 17.89
-  timeThreshold: 0
+  timeThreshold: 4.85
   spawnAmount: 8
   yPosition: 0
 --- !u!1 &1997160940
